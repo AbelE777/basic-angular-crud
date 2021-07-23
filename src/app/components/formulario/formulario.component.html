@@ -1,0 +1,92 @@
+<div class="container">
+
+    <div class="col bg-dark p-2 mt-2 text-light rounded">
+        <h3>{{title}}</h3>
+    </div>
+
+
+    <form [formGroup]="awesomeForm" class="container mt-4" (ngSubmit)='guardarPersona()'>
+       
+        <div class="row">
+            <div class="col-lg-3 col-sm-12 mb-3">
+                <!-- nombre -->
+                <label for="nombre">Nombre</label>
+                <input formControlName="nombre" type="text" class="form-control" placeholder="Nombres">
+                <div *ngIf="awesomeForm.get('nombre')?.errors && awesomeForm.get('nombre')?.dirty">
+                    <span ngClass="error" *ngIf="awesomeForm.get('nombre')?.hasError('required')">Nombre requerido</span>
+                    <span ngClass="error" *ngIf="awesomeForm.get('nombre')?.hasError('minlength')">Nombre too short</span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-12 mb-3">
+                <!-- edad -->
+                <label for="nombre">Edad</label>
+                <input type="number" class="form-control" placeholder="Edad" formControlName="edad">
+                <div *ngIf="awesomeForm.get('edad')?.errors && awesomeForm.get('edad')?.touched">
+                    <span ngClass="error" *ngIf="awesomeForm.get('edad')?.hasError('required')">Campo requerido</span>
+                    <span ngClass="error" *ngIf="awesomeForm.get('edad')?.hasError('min')">Eres menor de edad</span>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-sm-12 mb-3">
+                <!-- fecha nacimiento -->
+                <label for="f_nacimiento">F. nacimiento</label>
+                <input type="date" class="form-control" formControlName="f_nacimiento" id="f_nacimiento">
+                <div *ngIf="awesomeForm.get('f_nacimiento')?.errors && awesomeForm.get('f_nacimiento')?.touched">
+                    <span ngClass="error" *ngIf="awesomeForm.get('f_nacimiento')?.hasError('required')">
+                        Campo requerido</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 mb-3">
+                <!-- sector -->
+                <label for="id_sector">Sector</label>
+                <select formControlName="cod_sector" (change)="selectedOption()" class="form-control">
+                   
+                    <option [ngValue]="x" *ngFor="let x of sectores">
+                        <span *ngIf="x==1">Norte</span>
+                        <span *ngIf="x==2">Sur</span>
+                        <span *ngIf="x==3">Este</span>
+                        <span *ngIf="x==4">Suroeste</span>
+                    </option>
+                </select>
+                <div *ngIf="awesomeForm.get('cod_sector')?.errors && awesomeForm.get('cod_sector')?.touched">
+                    <span ngClass="error" ngClass="error" *ngIf="awesomeForm.get('cod_sector')?.hasError('required')">
+                        Campo requerido</span>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-sm-12 mb-3">
+                <!-- zona -->
+                <label for="id_zona">Zona</label>
+                <select formControlName="cod_zona" class="form-control">
+                    <option *ngFor='let x of zonas' [value]="x.cod_zona">{{x.descripcion_zona}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 mb-3">
+                <!-- sueldo -->
+                <label>Sueldo</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                    </div>
+                    <input formControlName="sueldo" type="text" class="form-control" placeholder="Sueldo">
+                </div>
+                <div *ngIf="awesomeForm.get('sueldo')?.errors && awesomeForm.get('sueldo')?.touched">
+                    <span ngClass="error" *ngIf="awesomeForm.get('sueldo')?.hasError('required')">Campo requerido</span>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-sm-12">
+                <input [disabled]="awesomeForm.invalid" type="submit" value="Guardar" class="btn btn-success mt-4">
+            </div>
+        </div>
+    </form>
+
+</div>

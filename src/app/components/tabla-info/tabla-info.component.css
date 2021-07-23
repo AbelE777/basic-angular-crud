@@ -1,0 +1,15 @@
+.hoverable:hover {
+    cursor:pointer;
+    font-weight: bolder;
+}
+tr>td:hover{
+    font-weight: bolder;
+}
+.form-control {
+    -webkit-appearance: auto;
+    appearance: auto;
+}
+.thead-dark {
+    background-color: #676f76;
+    color: rgb(255, 255, 255);
+}

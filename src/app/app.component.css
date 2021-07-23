@@ -1,0 +1,6 @@
+.activo{
+    color: black;
+    font-weight: bolder;
+    border: 1px solid grey;
+    border-radius: 5px;
+}

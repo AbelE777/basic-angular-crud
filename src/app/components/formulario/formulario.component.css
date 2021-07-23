@@ -1,0 +1,13 @@
+.form-control {
+    -webkit-appearance: auto;
+    appearance: auto;
+}
+input.ng-touched.ng-invalid{
+    border: 2px solid rgb(255, 118, 140);
+}
+input.ng-dirty.ng-invalid{
+    border: 2px solid rgb(255, 118, 140);
+}
+.error {
+    color: rgb(255, 118, 140);
+}
